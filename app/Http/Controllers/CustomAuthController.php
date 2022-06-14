@@ -26,7 +26,7 @@ class CustomAuthController extends Controller
                         ->withSuccess('Signed in');
         }
   
-        return redirect("login")->withSuccess('Login details are not valid');
+        return redirect("login")->withErrors('Login details are not valid');
     }
 
     public function registration()
@@ -71,5 +71,8 @@ class CustomAuthController extends Controller
         Auth::logout();
   
         return Redirect('login');
+    }
+    public function error(){
+        return view('auth.404');
     }
 }
